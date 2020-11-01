@@ -16,6 +16,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * The end to end points are already created!
 * Strongly suggest to use MongoDB because it is easier.
 * There is a docker boilerplate to set up the endpoint
+* The request and the response objects in express are the same objects in Node
 
 ## API Client Checklist
 
