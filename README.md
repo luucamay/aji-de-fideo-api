@@ -10,8 +10,9 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Learning goals](#learning-goals)
 
 ## Resources
-* [Create HTTP Server in nodeJS](https://vsvaibhav2016.medium.com/create-http-server-in-node-js-a3a452477771)
-* 
+* [Official docs: Create HTTP Server in nodeJS](https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTP-server/)
+* [Digital Ocean version: Create HTTP Server in nodeJS](https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module)
+
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
@@ -20,6 +21,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * The end to end points are already created!
 * Strongly suggest to use MongoDB because it is easier.
 * There is a docker boilerplate to set up the endpoint
+* Hello world of NodeJS is the creation of an HTTP Server
 
 ## API Client Checklist
 
