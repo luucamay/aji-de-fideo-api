@@ -3,15 +3,53 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 
 ## Índice
 
-* [UX process](#ux-process)
 * [Resources found in the learning path](#resources)
 * [Other implementations](#implementation)
 * [Questions](#questions)
 * [Insights](#insights)
 * [Learning goals](#learning-goals)
 
-## UX Process
-The design process will be made here!
+## Questions
+* What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
+
+## Insights
+* The end to end points are already created!
+* Strongly suggest to use MongoDB because it is easier.
+* There is a docker boilerplate to set up the endpoint
+
+## API Client Checklist
+
+### 7.1 `/`
+
+* [x] `GET /`
+
+### 7.2 `/auth`
+
+* [ ] `POST /auth`
+
+### 7.3 `/users`
+
+* [ ] `GET /users`
+* [ ] `GET /users/:uid`
+* [ ] `POST /users`
+* [ ] `PUT /users/:uid`
+* [ ] `DELETE /users/:uid`
+
+### 7.4 `/products`
+
+* [ ] `GET /products`
+* [ ] `GET /products/:productid`
+* [ ] `POST /products`
+* [ ] `PUT /products/:productid`
+* [ ] `DELETE /products/:productid`
+
+### 7.5 `/orders`
+
+* [ ] `GET /orders`
+* [ ] `GET /orders/:orderId`
+* [ ] `POST /orders`
+* [ ] `PUT /orders/:orderId`
+* [ ] `DELETE /orders/:orderId`
 
 ## Learning goals
 
@@ -20,6 +58,7 @@ The design process will be made here!
 * [x] Instalar y usar módulos. ([npm](https://www.npmjs.com/))
 * [x] [Configuración de package.json.](https://docs.npmjs.com/files/package.json)
 * [x] [Configuración de npm-scripts](https://docs.npmjs.com/misc/scripts)
+* [ ] Argumento de invocacion y de entorno
 
 ### Testing
 
