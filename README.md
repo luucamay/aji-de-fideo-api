@@ -9,6 +9,11 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Insights](#insights)
 * [Learning goals](#learning-goals)
 
+## Resources
+* [Official docs on express are really clear](https://expressjs.com/en/starter/hello-world.html)
+* [Setup a basic server with express framework](https://blog.vanila.io/setup-basic-server-with-express-framework-37b2ec749a6d)
+* [Express route separation](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-L47)
+
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
 
@@ -16,6 +21,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * The end to end points are already created!
 * Strongly suggest to use MongoDB because it is easier.
 * There is a docker boilerplate to set up the endpoint
+* The request and the response objects in express are the same objects in Node
 
 ## API Client Checklist
 
