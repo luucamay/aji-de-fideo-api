@@ -34,3 +34,5 @@ They can return:
 Take in consideration these things:
 * Set the ```Content-Type``` header in the HTTP response with the appropiate value. Method to use: ```res.setHeader```
 * Ensure that res.end() gets the data in the right format.
+## Create routes based on the Request object
+A really important property is ```req.url``` to know whether the user request info of ```/authors``` or ```/books```
