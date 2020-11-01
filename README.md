@@ -9,6 +9,10 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Insights](#insights)
 * [Learning goals](#learning-goals)
 
+## Resources
+* [Create HTTP Server in nodeJS](https://vsvaibhav2016.medium.com/create-http-server-in-node-js-a3a452477771)
+* 
+
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
 
