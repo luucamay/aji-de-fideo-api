@@ -12,7 +12,10 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 ## Resources
 * [Official docs: Create HTTP Server in nodeJS](https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTP-server/)
 * [Digital Ocean version: Create HTTP Server in nodeJS](https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module)
-
+* [Your first programm in nodeJS](https://www.digitalocean.com/community/tutorials/how-to-write-and-run-your-first-program-in-node-js)
+* [Asynchronous code in NodeJS](https://www.digitalocean.com/community/tutorials/how-to-write-asynchronous-code-in-node-js)
+* [Create a NodeJS Module](https://www.digitalocean.com/community/tutorials/how-to-create-a-node-js-module)
+* 
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
