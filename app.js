@@ -1,11 +1,10 @@
 const express = require('express');
 // bodyParser to parser JSON requests
 const bodyParser = require('body-parser');
+const product = require('./routes/product.route'); // Imports routes for the products
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
-})
+app.use('/products', product);
 
 let port = 1234;
 
