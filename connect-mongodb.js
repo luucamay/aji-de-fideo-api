@@ -17,7 +17,11 @@ async function main() {
 
     // Make the appropriate DB calls
     // await listDatabases(client);
-    await readCollection(client);
+    // await readCollection(client);
+    await createProduct(client, {
+      name: "Bread and Butter",
+      price: "1500"
+    });
 
   } catch (e) {
     console.error(e);
@@ -38,6 +42,11 @@ async function readCollection(client) {
 
   const results = await coll.toArray();
   results.forEach(console.log)
+}
+
+async function createProduct(client, newProduct) {
+  const result = await client.db("ajidefideo").collection("products").insertOne(newProduct);
+  console.log(`New listing created with the following id: ${result.insertedId}`);
 }
 
 main().catch(console.error);
