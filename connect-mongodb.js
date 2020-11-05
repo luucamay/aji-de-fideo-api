@@ -23,7 +23,8 @@ async function main() {
       name: "Bread and Butter",
       price: "1500"
     }); */
-    await updateProductById(client, "5fa33e327dd40d3f3c6c23d6", { price: "8500", type: "breakfast" });
+    // await updateProductById(client, "5fa33e327dd40d3f3c6c23d6", { price: "8500", type: "breakfast" });
+    await deleteProductById(client, "5fa1b42ac11e7052744c40cb");
 
   } catch (e) {
     console.error(e);
@@ -57,6 +58,12 @@ async function updateProductById(client, idOfProduct, updatedProduct) {
 
   console.log(`${result.matchedCount} document(s) matched the query criteria.`);
   console.log(`${result.modifiedCount} document(s) was/were updated.`);
+}
+
+async function deleteProductById(client, idOfProduct) {
+  result = await client.db("ajidefideo").collection("products")
+          .deleteOne({ _id: ObjectId(idOfProduct) });
+  console.log(`${result.deletedCount} document(s) was/were deleted.`);
 }
 
 main().catch(console.error);
