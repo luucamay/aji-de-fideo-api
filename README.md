@@ -81,7 +81,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [x] Instalar y usar módulos. ([npm](https://www.npmjs.com/))
 * [x] [Configuración de package.json.](https://docs.npmjs.com/files/package.json)
 * [x] [Configuración de npm-scripts](https://docs.npmjs.com/misc/scripts)
-* [ ] Argumento de invocacion y de entorno
+* [x] Argumento de invocacion y de entorno
 
 ### Testing
 
@@ -112,7 +112,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [ ] [Request, Response.](https://developer.mozilla.org/es/docs/Web/HTTP/Messages)
 * [ ] Headers.
 * [ ] Body.
-* [ ] [Verbos HTTP.](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
+* [x] [Verbos HTTP.](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
 * [x] [Codigos de status de HTTP.](https://dev.to/khaosdoctor/the-complete-guide-to-status-codes-for-meaningful-rest-apis-1-5c5)
 * [ ] Encodings y `JSON`.
 * [ ] [CORS.](https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS)
@@ -124,17 +124,17 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 
 ### Servidores
 
-* [ ] Variables de entorno.
-* [ ] `SSH`
-* [ ] `SSH` keys.
-* [ ] Qué es un VPS.
+* [x] Variables de entorno.
+* [x] `SSH`
+* [x] `SSH` keys.
+* [x] Qué es un VPS. (it is like digital ocean)
 
 ### Base de datos (MongoDB o MySQL)
 
-* [ ] Instalación.
-* [ ] Conexión a través de cliente.
-* [ ] Connection string.
-* [ ] Queries y comandos (creación, lectura, actualización, eliminación)
+* [x] Instalación.
+* [x] Conexión a través de cliente.
+* [x] Connection string.
+* [x] Queries y comandos (creación, lectura, actualización, eliminación)
 
 ### Deployment
 
