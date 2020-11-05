@@ -22,6 +22,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Get started with MongoDB in 10 minutes](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/)
 * [MongoDB native driver vs Mongoose](https://developer.mongodb.com/article/mongoose-versus-nodejs-driver)
 * [Connect your nodejs app to mongodb database](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database)
+* [MongoDB and node crud tutorial](https://developer.mongodb.com/quickstart/node-crud-tutorial)
 * [Mongo University: Create a NodeJS App MFLIX](https://university.mongodb.com/courses/M220JS/about)
 * [Work with enviroment variables inside the .env file](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)
 
