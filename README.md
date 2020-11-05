@@ -25,10 +25,9 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Mongo University: Create a NodeJS App MFLIX](https://university.mongodb.com/courses/M220JS/about)
 * [Work with enviroment variables inside the .env file](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)
 
-
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
- * Use mongodb driver for nodejs or mongoose?
+* Use mongodb driver for nodejs or mongoose?
 
 ## Insights
 * The end to end points are already created!
@@ -38,6 +37,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * We get HTML pages and JSON data as common server response.
 * The request and the response objects in express are the same objects in Node.
 * It is better to learn mongodb driver beacuse it shows you how to work with mongodb in general and not just for javascript
+* Make sure you are actually connecting to your database throgh enviroment variables!
 
 ## API Client Checklist
 

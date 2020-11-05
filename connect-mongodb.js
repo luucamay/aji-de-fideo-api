@@ -1,4 +1,5 @@
 const { MongoClient } = require('mongodb');
+const ObjectId = require('mongodb').ObjectID;
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -18,10 +19,11 @@ async function main() {
     // Make the appropriate DB calls
     // await listDatabases(client);
     // await readCollection(client);
-    await createProduct(client, {
+    /* await createProduct(client, {
       name: "Bread and Butter",
       price: "1500"
-    });
+    }); */
+    await updateProductById(client, "5fa33e327dd40d3f3c6c23d6", { price: "8500", type: "breakfast" });
 
   } catch (e) {
     console.error(e);
@@ -47,6 +49,14 @@ async function readCollection(client) {
 async function createProduct(client, newProduct) {
   const result = await client.db("ajidefideo").collection("products").insertOne(newProduct);
   console.log(`New listing created with the following id: ${result.insertedId}`);
+}
+
+async function updateProductById(client, idOfProduct, updatedProduct) {
+  result = await client.db("ajidefideo").collection("products")
+    .updateOne({ _id: ObjectId(idOfProduct) }, { $set: updatedProduct });
+
+  console.log(`${result.matchedCount} document(s) matched the query criteria.`);
+  console.log(`${result.modifiedCount} document(s) was/were updated.`);
 }
 
 main().catch(console.error);
