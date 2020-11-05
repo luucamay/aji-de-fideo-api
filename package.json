@@ -1,0 +1,23 @@
+{
+  "name": "aji-de-fideo-api",
+  "version": "1.0.0",
+  "description": "An API for restaurants made with NodeJS, Express and MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luucamay/aji-de-fideo-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luucamay/aji-de-fideo-api/issues"
+  },
+  "homepage": "https://github.com/luucamay/aji-de-fideo-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
