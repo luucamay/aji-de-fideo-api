@@ -18,10 +18,17 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Official docs on express are really clear](https://expressjs.com/en/starter/hello-world.html)
 * [Setup a basic server with express framework](https://blog.vanila.io/setup-basic-server-with-express-framework-37b2ec749a6d)
 * [Express route separation](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-L47)
-* 
+* [MongoDB gitbook self-creation](https://lupemaydana.gitbook.io/learn-mongodb/)
+* [Get started with MongoDB in 10 minutes](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/)
+* [MongoDB native driver vs Mongoose](https://developer.mongodb.com/article/mongoose-versus-nodejs-driver)
+* [Connect your nodejs app to mongodb database](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database)
+* [MongoDB and node crud tutorial](https://developer.mongodb.com/quickstart/node-crud-tutorial)
+* [Mongo University: Create a NodeJS App MFLIX](https://university.mongodb.com/courses/M220JS/about)
+* [Work with enviroment variables inside the .env file](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
+* Use mongodb driver for nodejs or mongoose?
 
 ## Insights
 * The end to end points are already created!
@@ -30,6 +37,8 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * Hello world of NodeJS is the creation of an HTTP Server.
 * We get HTML pages and JSON data as common server response.
 * The request and the response objects in express are the same objects in Node.
+* It is better to learn mongodb driver beacuse it shows you how to work with mongodb in general and not just for javascript
+* Make sure you are actually connecting to your database throgh enviroment variables!
 
 ## API Client Checklist
 
@@ -72,7 +81,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [x] Instalar y usar módulos. ([npm](https://www.npmjs.com/))
 * [x] [Configuración de package.json.](https://docs.npmjs.com/files/package.json)
 * [x] [Configuración de npm-scripts](https://docs.npmjs.com/misc/scripts)
-* [ ] Argumento de invocacion y de entorno
+* [x] Argumento de invocacion y de entorno
 
 ### Testing
 
@@ -103,7 +112,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [ ] [Request, Response.](https://developer.mozilla.org/es/docs/Web/HTTP/Messages)
 * [ ] Headers.
 * [ ] Body.
-* [ ] [Verbos HTTP.](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
+* [x] [Verbos HTTP.](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
 * [x] [Codigos de status de HTTP.](https://dev.to/khaosdoctor/the-complete-guide-to-status-codes-for-meaningful-rest-apis-1-5c5)
 * [ ] Encodings y `JSON`.
 * [ ] [CORS.](https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS)
@@ -115,17 +124,17 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 
 ### Servidores
 
-* [ ] Variables de entorno.
-* [ ] `SSH`
-* [ ] `SSH` keys.
-* [ ] Qué es un VPS.
+* [x] Variables de entorno.
+* [x] `SSH`
+* [x] `SSH` keys.
+* [x] Qué es un VPS. (it is like digital ocean)
 
 ### Base de datos (MongoDB o MySQL)
 
-* [ ] Instalación.
-* [ ] Conexión a través de cliente.
-* [ ] Connection string.
-* [ ] Queries y comandos (creación, lectura, actualización, eliminación)
+* [x] Instalación.
+* [x] Conexión a través de cliente.
+* [x] Connection string.
+* [x] Queries y comandos (creación, lectura, actualización, eliminación)
 
 ### Deployment
 
