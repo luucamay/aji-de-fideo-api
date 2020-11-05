@@ -25,6 +25,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [MongoDB and node crud tutorial](https://developer.mongodb.com/quickstart/node-crud-tutorial)
 * [Mongo University: Create a NodeJS App MFLIX](https://university.mongodb.com/courses/M220JS/about)
 * [Work with enviroment variables inside the .env file](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)
+* [Express and NodeJS in MDN tutorial seriess](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
