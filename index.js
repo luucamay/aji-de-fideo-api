@@ -47,18 +47,14 @@ MongoClient.connect(uri, (err, db) => {
   });
 
   app.get('/products/:productId', (req, res, next) => {
-    if (err) {
-      throw err;
-    }
-
-    let id = ObjectID(req.params.id);
-    dbase.collection('name').find(id).toArray((err, result) => {
-      if (err) {
-        throw err;
-      }
-
-      res.send(result);
-    });
+    dbase.collection("products")
+      .findOne({ _id: ObjectID(req.params.productId) }).then(result => {
+        if (result) {
+          res.send(result);
+        } else {
+          console.log(`Product not found`);
+        }
+      });
   });
 
   app.put('/products/:productId', (req, res, next) => {
