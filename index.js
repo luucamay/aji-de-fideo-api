@@ -70,14 +70,14 @@ MongoClient.connect(uri, (err, db) => {
 
 
   app.delete('/products/:productId', (req, res, next) => {
-    let id = ObjectID(req.params.id);
+    let id = ObjectID(req.params.productId);
 
-    dbase.collection('name').deleteOne({ _id: id }, (err, result) => {
+    dbase.collection('products').deleteOne({ _id: id }, (err, result) => {
       if (err) {
         throw err;
       }
 
-      res.send('user deleted');
+      res.send('product deleted');
     });
   });
 
