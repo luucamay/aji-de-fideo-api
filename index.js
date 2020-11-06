@@ -58,16 +58,13 @@ MongoClient.connect(uri, (err, db) => {
   });
 
   app.put('/products/:productId', (req, res, next) => {
-    var id = {
-      _id: new ObjectID(req.params.id)
-    };
 
-    dbase.collection("name").update(id, { $set: { first_name: req.body.first_name, last_name: req.body.last_name } }, (err, result) => {
+    dbase.collection("products").updateOne({ _id: ObjectID(req.params.productId) }, { $set: req.body }, (err, result) => {
       if (err) {
         throw err;
       }
 
-      res.send('user updated sucessfully');
+      res.send('product updated sucessfully');
     });
   });
 
