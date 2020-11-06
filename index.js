@@ -1,32 +1,79 @@
 const express = require('express');
-const config = require('./config');
-const authMiddleware = require('./middleware/auth');
-const errorHandler = require('./middleware/error');
-const routes = require('./routes');
-const pkg = require('./package.json');
-
-const { port, dbUrl, secret } = config;
+const MongoClient = require('mongodb').MongoClient
+const bodyParser = require('body-parser')
+var ObjectID = require('mongodb').ObjectID;
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
 
-// TODO: Conección a la BD en mogodb
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+const uri = process.env.DB_URL || 'mongodb://localhost:27017/test';
+console.log(uri);
+MongoClient.connect(uri, { useUnifiedTopology: true })
+  .then((client) => {
+    app.listen(3000, () => {
+      console.log('app working on 3000')
+    });
 
-app.set('config', config);
-app.set('pkg', pkg);
+    const dbase = client.db("ajidefideo");
 
-// parse application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(authMiddleware(secret));
+    app.post('/products', (req, res, next) => {
 
-// Registrar rutas
-routes(app, (err) => {
-  if (err) {
-    throw err;
-  }
+      let newProduct = {
+        name: req.body.name,
+        price: req.body.price,
+        image: 'image url',
+        type: req.body.type,
+        dataEntry: new Date()
+      };
 
-  app.use(errorHandler);
+      dbase.collection("products").insertOne(newProduct)
+        .then(result => {
+          res.send('product added successfully');
+        })
+        .catch(console.error);
 
-  app.listen(port, () => {
-    console.info(`App listening on port ${port}`);
-  });
-});
+    });
+
+    app.get('/products', (req, res, next) => {
+      dbase.collection('products').find().toArray((err, results) => {
+        res.send(results)
+      });
+    });
+
+    app.get('/products/:productId', (req, res, next) => {
+      dbase.collection("products")
+        .findOne({ _id: ObjectID(req.params.productId) }).then(result => {
+          if (result) {
+            res.send(result);
+          } else {
+            console.log(`Product not found`);
+          }
+        });
+    });
+
+    app.put('/products/:productId', (req, res, next) => {
+      const filter = { _id: ObjectID(req.params.productId) };
+      const updateDocumentProduct = { $set: req.body };
+      dbase.collection("products").updateOne(filter, updateDocumentProduct)
+        .then(() => {
+          res.send('product updated sucessfully');
+        })
+        .catch(console.error);
+    });
+
+
+    app.delete('/products/:productId', (req, res, next) => {
+      const filter = { _id: ObjectID(req.params.productId) };
+
+      dbase.collection('products').deleteOne(filter)
+        .then(() => {
+          // TO DO: check here about deleted code!
+          res.send('product deleted');
+        })
+        .catch(console.error);
+    });
+
+  })
+  .catch(console.error);
