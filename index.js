@@ -26,16 +26,7 @@ app.get('/products/:productId', products.getById);
 app.put('/products/:productId', products.update);
 
 
-app.delete('/products/:productId', (req, res, next) => {
-  const filter = { _id: ObjectID(req.params.productId) };
-
-  dbase.collection('products').deleteOne(filter)
-    .then(() => {
-      // TO DO: check here about deleted code!
-      res.send('product deleted');
-    })
-    .catch(console.error);
-});
+app.delete('/products/:productId', products.remove);
 
 // connect to Mongo on start
 client.connect(uri, (err) => {

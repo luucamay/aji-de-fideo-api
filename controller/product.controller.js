@@ -49,9 +49,22 @@ const update = (req, res, next) => {
     .catch(console.error);
 }
 
+const remove = (req, res, next) => {
+  const filter = { _id: ObjectID(req.params.productId) };
+  let products = client.db('ajidefideo').collection('products');
+
+  products.deleteOne(filter)
+    .then(() => {
+      // TO DO: check here about deleted code!
+      res.send('product deleted');
+    })
+    .catch(console.error);
+}
+
 module.exports = {
   getAll,
   getById,
   create,
-  update
+  update,
+  remove
 };
