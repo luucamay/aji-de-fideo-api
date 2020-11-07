@@ -26,10 +26,13 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Mongo University: Create a NodeJS App MFLIX](https://university.mongodb.com/courses/M220JS/about)
 * [Work with enviroment variables inside the .env file](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)
 * [Express and NodeJS in MDN tutorial seriess](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
+* [About connection pooling](http://oak.cs.ucla.edu/classes/cs144/mongo/mongo-node.html)
+* [This tutorial looks interesting for MVC with express and mongoose](https://dev.to/nidaslife23/crud-operations-in-express-nodejs-and-mongodb-3fog)
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
 * Use mongodb driver for nodejs or mongoose?
+* Why do we use the .use method in express?
 
 ## Insights
 * The end to end points are already created!
