@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
+const serveIndex = require('serve-index');
 
 app.use((req, res, next) => {
   console.log('Time: ', Date.now());
   next();
 });
+
+app.use('/gators', express.static('public'))
+app.use('/gators', serveIndex('public'))
 
 app.use('/nest', (req, res, next) => {
   console.log('Request type: ', req.method);
