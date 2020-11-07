@@ -10,24 +10,42 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Learning goals](#learning-goals)
 
 ## Resources
+
+### NodeJS Server
 * [Official docs: Create HTTP Server in nodeJS](https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTP-server/)
 * [Digital Ocean version: Create HTTP Server in nodeJS](https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module)
 * [Your first programm in nodeJS](https://www.digitalocean.com/community/tutorials/how-to-write-and-run-your-first-program-in-node-js)
 * [Asynchronous code in NodeJS](https://www.digitalocean.com/community/tutorials/how-to-write-asynchronous-code-in-node-js)
 * [Create a NodeJS Module](https://www.digitalocean.com/community/tutorials/how-to-create-a-node-js-module)
+* [Work with enviroment variables inside the .env file](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)
+
+### Express
 * [Official docs on express are really clear](https://expressjs.com/en/starter/hello-world.html)
 * [Setup a basic server with express framework](https://blog.vanila.io/setup-basic-server-with-express-framework-37b2ec749a6d)
 * [Express route separation](https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-L47)
+
+### MongoDB
 * [MongoDB gitbook self-creation](https://lupemaydana.gitbook.io/learn-mongodb/)
 * [Get started with MongoDB in 10 minutes](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/)
 * [MongoDB native driver vs Mongoose](https://developer.mongodb.com/article/mongoose-versus-nodejs-driver)
+
+### MongoDB and NodeJS
 * [Connect your nodejs app to mongodb database](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database)
 * [MongoDB and node crud tutorial](https://developer.mongodb.com/quickstart/node-crud-tutorial)
 * [Mongo University: Create a NodeJS App MFLIX](https://university.mongodb.com/courses/M220JS/about)
-* [Work with enviroment variables inside the .env file](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786)
-* [Express and NodeJS in MDN tutorial seriess](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
+ * [NodeJS MondoDB Driver API](http://mongodb.github.io/node-mongodb-native/3.6/api/MongoClient.html)
+
+### MongoDB, NodeJS and Express
+ * [Basic routing http request and crud operation with express and mongodb](https://dev.to/ichtrojan/basic-routing-http-requests-and-crud-operation-with-express-and-mongodb-od2)
+ * [Database integration](https://expressjs.com/en/guide/database-integration.html#mongodb)
+ * [MDN about Routes and controllers](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes)
+* [Express and NodeJS in MDN tutorial series](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
 * [About connection pooling](http://oak.cs.ucla.edu/classes/cs144/mongo/mongo-node.html)
 * [This tutorial looks interesting for MVC with express and mongoose](https://dev.to/nidaslife23/crud-operations-in-express-nodejs-and-mongodb-3fog)
+
+### Express Middlewares
+* [Writing middlewares](http://expressjs.com/en/guide/writing-middleware.html)
+* [Using middleware](https://expressjs.com/en/guide/using-middleware.html)
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
