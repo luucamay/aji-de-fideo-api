@@ -1,14 +1,14 @@
 const client = require('../db');
 const { ObjectID } = require('../db');
 
-const getAll = (req, res, next) => {
+const findAll = (req, res, next) => {
   let products = client.db('ajidefideo').collection('products');
   products.find().toArray((err, results) => {
     res.send(results)
   });
 }
 
-const getById = (req, res, next) => {
+const findOne = (req, res, next) => {
   let products = client.db('ajidefideo').collection('products');
   products.findOne({ _id: ObjectID(req.params.productId) })
     .then(result => {
@@ -62,8 +62,8 @@ const remove = (req, res, next) => {
 }
 
 module.exports = {
-  getAll,
-  getById,
+  findAll,
+  findOne,
   create,
   update,
   remove

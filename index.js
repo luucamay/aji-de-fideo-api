@@ -19,12 +19,11 @@ const uri = process.env.DB_URL || 'mongodb://localhost:27017/test';
 
 app.post('/products', products.create);
 
-app.get('/products', products.getAll);
+app.get('/products', products.findAll);
 
-app.get('/products/:productId', products.getById);
+app.get('/products/:productId', products.findOne);
 
 app.put('/products/:productId', products.update);
-
 
 app.delete('/products/:productId', products.remove);
 
