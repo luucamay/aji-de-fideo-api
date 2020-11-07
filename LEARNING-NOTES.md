@@ -1,15 +1,26 @@
-# Learning Notes about express nodejs and mongodb crud app
+# About middlewares
 
-## Difference between middlware function and a route handler
-The only difference between a middleware function and a route handler callback is that middleware functions have a third argument next, which middleware functions are expected to call if they are not that which completes the request cycle (when the middleware function is called, this contains the next function that must be called).
+When your repeat the same code at the beginning of an express route handler those are moments where you can use a middleware.
 
- ## Questions
- * To use the constructor or the class for MongoDB??
- 
- ## Resources to watch:
- * [Basic routing http request and crud operation with express and mongodb](https://dev.to/ichtrojan/basic-routing-http-requests-and-crud-operation-with-express-and-mongodb-od2)
- * [NodeJS MondoDB Driver API](http://mongodb.github.io/node-mongodb-native/3.6/api/MongoClient.html)
- * [Database integration](https://expressjs.com/en/guide/database-integration.html#mongodb)
- * [MDN about Routes and controllers](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes)
- * [Writing middlewares](http://expressjs.com/en/guide/writing-middleware.html)
- * [Using middleware](https://expressjs.com/en/guide/using-middleware.html)
+## What are middlewares?
+Middlewares are functions that can:
+* execute any code
+* make changes to the request and response objects
+* end the request-response cycle
+* call the next middleware function in the stack
+
+## To define a middleware function
+1. Call ```app.use()```
+2. Pass it a function.
+
+## What is ```next()``` ?
+The ```next()``` call tells the middleware to go to the next middleware function!
+** If you do not call the ```next()``` function your request will get stuck on this middleware
+
+## What arguments has the ```use``` method?
+* Only one argument that is a function
+* Two arguments: The first one is optional, can be a route, the second one is a function
+
+## Common middlewares
+* body-parser
+* cors
