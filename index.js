@@ -17,23 +17,7 @@ const uri = process.env.DB_URL || 'mongodb://localhost:27017/test';
 
 // const dbase = client.db("ajidefideo");
 
-app.post('/products', (req, res, next) => {
-
-  let newProduct = {
-    name: req.body.name,
-    price: req.body.price,
-    image: 'image url',
-    type: req.body.type,
-    dataEntry: new Date()
-  };
-
-  dbase.collection("products").insertOne(newProduct)
-    .then(result => {
-      res.send('product added successfully');
-    })
-    .catch(console.error);
-
-});
+app.post('/products', products.create);
 
 app.get('/products', products.getAll);
 

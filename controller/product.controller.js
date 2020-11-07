@@ -20,7 +20,26 @@ const getById = (req, res, next) => {
     });
 }
 
+const create = (req, res, next) => {
+
+  let newProduct = {
+    name: req.body.name,
+    price: req.body.price,
+    image: 'image url',
+    type: req.body.type,
+    dataEntry: new Date()
+  };
+  let products = client.db('ajidefideo').collection('products');
+  products.insertOne(newProduct)
+    .then(result => {
+      res.send('product added successfully');
+    })
+    .catch(console.error);
+
+}
+
 module.exports = {
   getAll,
-  getById
+  getById,
+  create
 };
