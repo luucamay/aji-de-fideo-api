@@ -23,15 +23,7 @@ app.get('/products', products.getAll);
 
 app.get('/products/:productId', products.getById);
 
-app.put('/products/:productId', (req, res, next) => {
-  const filter = { _id: ObjectID(req.params.productId) };
-  const updateDocumentProduct = { $set: req.body };
-  dbase.collection("products").updateOne(filter, updateDocumentProduct)
-    .then(() => {
-      res.send('product updated sucessfully');
-    })
-    .catch(console.error);
-});
+app.put('/products/:productId', products.update);
 
 
 app.delete('/products/:productId', (req, res, next) => {

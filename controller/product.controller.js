@@ -38,8 +38,20 @@ const create = (req, res, next) => {
 
 }
 
+const update = (req, res, next) => {
+  let products = client.db('ajidefideo').collection('products');
+  const filter = { _id: ObjectID(req.params.productId) };
+  const updateDocumentProduct = { $set: req.body };
+  products.updateOne(filter, updateDocumentProduct)
+    .then(() => {
+      res.send('product updated sucessfully');
+    })
+    .catch(console.error);
+}
+
 module.exports = {
   getAll,
   getById,
-  create
+  create,
+  update
 };
