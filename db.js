@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 let client = null;
+const ObjectID = require('mongodb').ObjectID;
 
 // create a connection to url and call callback()
 const connect = (url, callback) => {
@@ -40,5 +41,6 @@ const close = () => {
 module.exports = {
   connect,
   db,
-  close
+  close,
+  ObjectID
 };

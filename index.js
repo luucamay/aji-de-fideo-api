@@ -37,16 +37,7 @@ app.post('/products', (req, res, next) => {
 
 app.get('/products', products.getAll);
 
-app.get('/products/:productId', (req, res, next) => {
-  dbase.collection("products")
-    .findOne({ _id: ObjectID(req.params.productId) }).then(result => {
-      if (result) {
-        res.send(result);
-      } else {
-        console.log(`Product not found`);
-      }
-    });
-});
+app.get('/products/:productId', products.getById);
 
 app.put('/products/:productId', (req, res, next) => {
   const filter = { _id: ObjectID(req.params.productId) };
