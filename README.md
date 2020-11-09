@@ -52,6 +52,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
 * Use mongodb driver for nodejs or mongoose?
 * Why do we use the .use method in express?
+* When using middlewares when we use ```app.use("/route", callback)``` vs ```app.get(/"reoute", callback)```
 
 ## Insights
 * The end to end points are already created!
