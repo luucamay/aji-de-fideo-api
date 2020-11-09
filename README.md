@@ -44,6 +44,8 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [This tutorial looks interesting for MVC with express and mongoose](https://dev.to/nidaslife23/crud-operations-in-express-nodejs-and-mongodb-3fog)
 
 ### Express Middlewares
+* [Basic Express Server in NodeJS, first middlewares](https://www.digitalocean.com/community/tutorials/nodejs-express-basics)
+* [Create your own express Middleware](https://www.digitalocean.com/community/tutorials/nodejs-creating-your-own-express-middleware)
 * [Writing middlewares](http://expressjs.com/en/guide/writing-middleware.html)
 * [Using middleware](https://expressjs.com/en/guide/using-middleware.html)
 
@@ -51,6 +53,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
 * Use mongodb driver for nodejs or mongoose?
 * Why do we use the .use method in express?
+* When using middlewares when we use ```app.use("/route", callback)``` vs ```app.get(/"reoute", callback)```
 
 ## Insights
 * The end to end points are already created!
@@ -126,8 +129,8 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 
 ### Express
 
-* [ ] Rutas.
-* [ ] `middlewares`
+* [x] Rutas.
+* [x] `middlewares`
 
 ### HTTP
 
