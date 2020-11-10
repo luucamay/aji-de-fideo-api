@@ -144,7 +144,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 
 ### Autenticación
 
-* [ ] `JWT`
+* [x] `JWT`
 * [ ] Almacenamiento y acceso de contraseñas.
 
 ### Servidores
