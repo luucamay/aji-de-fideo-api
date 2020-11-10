@@ -3,3 +3,6 @@ curl -X GET "http://localhost:3000/products/ID"
 curl -d '{"name": "chairo", "price": "2050", "type": "main dish"}' -H "Content-Type: application/json" -X POST http://localhost:3000/products/
 curl -X PUT -H "Content-Type: application/json" -d '{"price": 18500}' http://localhost:3000/products/ID
 curl -X DELETE "http://localhost:3000/products/ID/"
+
+## Authentication
+curl -d '{"email": "lilo@lilo.com", "password": "esunsecreto"}' -H "Content-Type: application/json" -X POST http://localhost:3000/auth/
