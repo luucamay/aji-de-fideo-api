@@ -64,6 +64,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * The request and the response objects in express are the same objects in Node.
 * It is better to learn mongodb driver beacuse it shows you how to work with mongodb in general and not just for javascript
 * Make sure you are actually connecting to your database throgh enviroment variables!
+* You should not have access to the API if you are not authenticated, that is the moment where tokens are created and needed!
 
 ## API Client Checklist
 
