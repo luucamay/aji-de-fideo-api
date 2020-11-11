@@ -8,7 +8,6 @@ const jwt = require('jsonwebtoken');
 dotenv.config();
 
 const secret = process.env.JWT_SECRET || 'esta-es-la-api-burger-queen';
-console.log(secret);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,7 +25,6 @@ app.post('/auth', (req, res) => {
   }
   // TO DO only create token if user is in the database
   const token = generateAccessToken({ email: req.body.email });
-  console.log("here is your token", token);
   res.json(token);
   // TO DO should I use the next function?
 });

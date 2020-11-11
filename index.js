@@ -2,26 +2,42 @@ const express = require('express');
 const app = express();
 
 const client = require('./db');
-const products = require('./controller/product.controller');
-const bodyParser = require('body-parser');
+const users = require('./controller/user.controller');
+const jwt = require('jsonwebtoken');
 
 const dotenv = require('dotenv');
 dotenv.config();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 const uri = process.env.DB_URL || 'mongodb://localhost:27017/test';
+const secret = process.env.JWT_SECRET || 'esta-es-la-api-burger-queen';
 
-app.post('/products', products.create);
+const generateAccessToken = (user) => {
+  // Use email from user to generate the token
+  return jwt.sign(user, secret, { expiresIn: '1h' });
+}
 
-app.get('/products', products.findAll);
+// asynchronous function
+app.post('/auth', (req, res) => {
+  const { email, password } = req.body;
 
-app.get('/products/:productId', products.findOne);
-
-app.put('/products/:productId', products.update);
-
-app.delete('/products/:productId', products.remove);
+  if (!email || !password) {
+    return res.status(400).json({ error: "Please provide email and password" });
+  }
+  users.getUserByEmail('users', email).then(
+    (user) => {
+      if (!user)
+        return res.status(404).json({ error: "User not found!" });
+      else if (user.password !== password)
+        return res.status(400).json({error: "Wrong password"})
+      const token = generateAccessToken({ email, password });
+      res.status(200);
+      res.json({ token });
+    }
+  )
+});
 
 // connect to Mongo on start
 client.connect(uri, (err) => {
