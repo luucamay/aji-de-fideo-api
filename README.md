@@ -54,6 +54,9 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [Express and authentication tokens - tutorial from digital ocean](https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs)
 * [Another example of jwt, I have not read it all](https://livecodestream.dev/post/2020-08-11-a-practical-guide-to-jwt-authentication-with-nodejs/)
 
+## Others
+* [About tag parameters or ```@``` inside a JS file](https://jsdoc.app/tags-param.html)
+
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
 * Use mongodb driver for nodejs or mongoose?
