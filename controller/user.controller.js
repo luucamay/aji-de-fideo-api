@@ -1,13 +1,11 @@
 const client = require('../db');
 const { ObjectID } = require('../db');
 
-const getUser = (collection, email, password) => {
+const getUserByEmail = (collection, email) => {
   const users = client.db('ajidefideo').collection(collection);
-  const filter = {email: email, password: password};
-  return users.findOne(filter)
+  return users.findOne({email})
 }
 
 module.exports = {
-  findOne,
-  getUser
+  getUserByEmail
 };

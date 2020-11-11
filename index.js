@@ -3,14 +3,13 @@ const app = express();
 
 const client = require('./db');
 const users = require('./controller/user.controller');
-const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
 const dotenv = require('dotenv');
 dotenv.config();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 const uri = process.env.DB_URL || 'mongodb://localhost:27017/test';
 const secret = process.env.JWT_SECRET || 'esta-es-la-api-burger-queen';
@@ -27,10 +26,12 @@ app.post('/auth', (req, res) => {
   if (!email || !password) {
     return res.status(400).json({ error: "Please provide email and password" });
   }
-  users.getUser('users', email, password).then(
+  users.getUserByEmail('users', email).then(
     (user) => {
       if (!user)
-        return res.status(404).json({ error: "User email or password not found!" });
+        return res.status(404).json({ error: "User not found!" });
+      else if (user.password !== password)
+        return res.status(400).json({error: "Wrong password"})
       const token = generateAccessToken({ email, password });
       res.status(200);
       res.json({ token });
