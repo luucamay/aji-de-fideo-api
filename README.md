@@ -56,6 +56,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 
 ## Others
 * [About tag parameters or ```@``` inside a JS file](https://jsdoc.app/tags-param.html)
+* [You will find in the middleware a 'curried function'](https://stackoverflow.com/questions/32782922/what-do-multiple-arrow-functions-mean-in-javascript)
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
