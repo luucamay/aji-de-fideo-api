@@ -1,6 +1,3 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
 const dotenv = require("dotenv");
 const jwt = require('jsonwebtoken');
 
@@ -9,26 +6,33 @@ dotenv.config();
 
 const secret = process.env.JWT_SECRET || 'esta-es-la-api-burger-queen';
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+module.exports = (app, nextMain) => {
+  // asynchronous function
+  app.post('/auth', (req, res, next) => {
+    const { email, password } = req.body;
 
+    if (!email || !password) {
+      //return res.status(400).json({ error: "Please provide email and password" });
+      return next(400);
+    }
+    users.getUserByEmail('users', email)
+      .then((user) => {
+        if (!user)
+          //return res.status(404).json({ error: "User not found!" });
+          next(404);
+        else if (user.password !== password)
+          // res.status(400).json({ error: "Wrong password" })
+          next(400);
+        else {
+          const token = generateAccessToken({ email, password });
+          return res.status(200).json({ token });
+          // return res.status(200).send({ token });
+        }
+      });
+  });
+  return nextMain();
+}
 const generateAccessToken = (user) => {
   // Use email from user to generate the token
   return jwt.sign(user, secret, { expiresIn: '1h' });
 }
-
-app.post('/auth', (req, res) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    return next(400);
-  }
-  // TO DO only create token if user is in the database
-  const token = generateAccessToken({ email: req.body.email });
-  res.json(token);
-  // TO DO should I use the next function?
-});
-
-app.listen(3000, () => {
-  console.log('Listening on port 3000...');
-});
