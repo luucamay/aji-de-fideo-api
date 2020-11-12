@@ -40,7 +40,7 @@ module.exports = (app, nextMain) => {
           // res.status(400).json({ error: "Wrong password" })
           next(400);
         else {
-          const token = generateAccessToken({ email, password });
+          const token = generateAccessToken({ uid: user._id });
           return res.status(200).json({ token });
         }
       });
@@ -48,6 +48,7 @@ module.exports = (app, nextMain) => {
   return nextMain();
 }
 
-const generateAccessToken = (user) => {
-  return jwt.sign(user, secret, { expiresIn: '1h' });
+const generateAccessToken = (payload) => {
+  //return jwt.sign(payload, secret, { expiresIn: '1h' });
+  return jwt.sign(payload, secret);
 }
