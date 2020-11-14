@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 const jwt = require('jsonwebtoken');
-const users = require('../controller/user.controller');
+const users = require('../controller/users');
 
 // get config vars
 dotenv.config();
@@ -31,7 +31,7 @@ module.exports = (app, nextMain) => {
     }
 
     // Authenticate user
-    users.getUserByEmail('users', email)
+    users.getUserByEmail(email)
       .then((user) => {
         if (!user)
           //return res.status(404).json({ error: "User not found!" });
@@ -40,7 +40,7 @@ module.exports = (app, nextMain) => {
           // res.status(400).json({ error: "Wrong password" })
           next(400);
         else {
-          const token = generateAccessToken({ email, password });
+          const token = generateAccessToken({ uid: user._id });
           return res.status(200).json({ token });
         }
       });
@@ -48,6 +48,7 @@ module.exports = (app, nextMain) => {
   return nextMain();
 }
 
-const generateAccessToken = (user) => {
-  return jwt.sign(user, secret, { expiresIn: '1h' });
+const generateAccessToken = (payload) => {
+  //return jwt.sign(payload, secret, { expiresIn: '1h' });
+  return jwt.sign(payload, secret);
 }

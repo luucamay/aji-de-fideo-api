@@ -1,8 +1,13 @@
 const auth = require('./auth');
 
+const {
+  requireAuth,
+  requireAdmin,
+} = require('../middleware/auth');
+
 const root = (app, next) => {
   const pkg = app.get('pkg');
-  app.get('/', (req, res) => res.json({ name: pkg.name, version: pkg.version }));
+  app.get('/', requireAdmin, (req, res) => res.json({ name: pkg.name, version: pkg.version }));
   app.all('*', (req, resp, nextAll) => nextAll(404));
   return next();
 };

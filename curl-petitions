@@ -6,3 +6,7 @@ curl -X DELETE "http://localhost:3000/products/ID/"
 
 ## Authentication
 curl -d '{"email": "lilo@lilo.com", "password": "esunsecreto"}' -H "Content-Type: application/json" -X POST http://localhost:3000/auth/
+curl -d '{"email": "lu@lu.com", "password": "noesunsecreto"}' -H "Content-Type: application/json" -X POST http://localhost:3000/auth/
+
+## Send toke of authorization in request object
+curl -H "Authorization: Bearer ${TOKEN}" http://localhost:3000

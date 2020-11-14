@@ -56,6 +56,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 
 ## Others
 * [About tag parameters or ```@``` inside a JS file](https://jsdoc.app/tags-param.html)
+* [You will find in the middleware a 'curried function'](https://stackoverflow.com/questions/32782922/what-do-multiple-arrow-functions-mean-in-javascript)
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
@@ -73,6 +74,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * It is better to learn mongodb driver beacuse it shows you how to work with mongodb in general and not just for javascript
 * Make sure you are actually connecting to your database throgh enviroment variables!
 * You should not have access to the API if you are not authenticated, that is the moment where tokens are created and needed!
+* What does it mean ```next(401)``` error number, can we handle that in another way?
 
 ## API Client Checklist
 
