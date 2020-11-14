@@ -38,7 +38,6 @@ module.exports = (secret) => (req, res, next) => {
 
 module.exports.isAuthenticated = (req) => {
   if (req.user) {
-    console.log(req.user);
     return true;
   }
   return false;

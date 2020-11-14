@@ -1,4 +1,5 @@
 const auth = require('./auth');
+const users = require('./users');
 
 const {
   requireAuth,
@@ -28,5 +29,6 @@ const register = (app, routes, cb) => {
 
 module.exports = (app, next) => register(app, [
   auth,
+  users,
   root,
 ], next);
