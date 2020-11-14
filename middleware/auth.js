@@ -1,11 +1,7 @@
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
 const users = require('../controller/users');
 
-dotenv.config();
-const secret = process.env.JWT_SECRET || 'esta-es-la-api-burger-queen';
-
-module.exports = (req, res, next) => {
+module.exports = (secret) => (req, res, next) => {
   // authorization is a string, looks like: "TYPE TOKEN"
   const { authorization } = req.headers;
 
@@ -42,13 +38,14 @@ module.exports = (req, res, next) => {
 
 module.exports.isAuthenticated = (req) => {
   if (req.user) {
+    console.log(req.user);
     return true;
   }
   return false;
 };
 
 module.exports.isAdmin = (req) => {
-  if (req.user.rolesAdmin) {
+  if (req.user.roles.admin) {
     return true;
   }
   return false;
