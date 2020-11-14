@@ -13,10 +13,11 @@ const getUserById = (id) => {
 
 const getUsers = () => {
   const users = client.db('ajidefideo').collection('users');
-  return users.find();
+  return users.find().toArray();
 }
 
 module.exports = {
   getUserByEmail,
-  getUserById
+  getUserById,
+  getUsers
 };

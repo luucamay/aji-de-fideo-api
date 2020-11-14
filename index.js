@@ -22,7 +22,6 @@ routes(app, (err) => {
   if (err) {
     throw err;
   }
-  // Where do we connect the db???
   // connect to Mongo on start
   client.connect(uri, (err) => {
     if (err) {
