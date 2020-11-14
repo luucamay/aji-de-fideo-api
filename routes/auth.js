@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 const jwt = require('jsonwebtoken');
-const users = require('../controller/user.controller');
+const users = require('../controller/users');
 
 // get config vars
 dotenv.config();
@@ -31,7 +31,7 @@ module.exports = (app, nextMain) => {
     }
 
     // Authenticate user
-    users.getUserByEmail('users', email)
+    users.getUserByEmail(email)
       .then((user) => {
         if (!user)
           //return res.status(404).json({ error: "User not found!" });
