@@ -31,7 +31,7 @@ module.exports = (app, nextMain) => {
     }
 
     // Authenticate user
-    users.getUserByEmail(email)
+    users.getOneUser(email)
       .then((user) => {
         if (!user)
           //return res.status(404).json({ error: "User not found!" });
