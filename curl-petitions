@@ -14,3 +14,4 @@ curl -H "Authorization: Bearer ${TOKEN}" http://localhost:3000
 ## Users CRUD petitions
 curl -X GET "http://localhost:3000/users/" -H "Authorization: Bearer ${TOKEN}"
 curl -X GET "http://localhost:3000/users/${id}" -H "Authorization: Bearer ${TOKEN}"
+curl -X POST http://localhost:3000/users/ -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" -d '{"email": "chairo", "password": "2050"}'
