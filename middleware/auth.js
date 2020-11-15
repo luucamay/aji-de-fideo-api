@@ -28,6 +28,7 @@ module.exports = (secret) => (req, res, next) => {
         if (!user)
           next(401); // not user found
         // TODO: Ask if add user to request or to the body of request?
+        delete user.password;
         req.user = user;
         next();
       })
