@@ -100,8 +100,8 @@ module.exports = (app, nextMain) => {
 
     const user = { email, password };
     // TODO: check if the email is valid with a regex?
-
-    if (roles && roles.admin && typeof roles.admin === "boolean"){
+    // TODO: Validate roles object - JSON schema?
+    if (roles){
       user.roles = roles;
     }
 
@@ -110,6 +110,7 @@ module.exports = (app, nextMain) => {
         // result.ops has the array of documents inserted, see the docs below:
         // http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#~insertOneWriteOpResult
         const userInserted = result.ops[0];
+        console.log(userInserted);
         delete userInserted.password;
         res.status(200).json(userInserted);
       })
