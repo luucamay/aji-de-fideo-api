@@ -19,12 +19,11 @@ module.exports = (secret) => (req, res, next) => {
 
   jwt.verify(token, secret, function (err, decodedToken) {
     if (err) {
-      console.log(err.message);
       return next(403); // token invalid
     }
     // TODO: Verificar identidad del usuario usando `decodeToken.uid`
     // decodeToken is an object that has an uid property
-    users.getUserById(decodedToken.uid)
+    users.getOneUser(decodedToken.uid)
       .then((user) => {
         if (!user)
           next(401); // not user found
@@ -50,6 +49,15 @@ module.exports.isAdmin = (req) => {
   return false;
 };
 
+module.exports.isSameUser = (req) => {
+  const uid = req.params.uid;
+  // TODO: Check if it is necesary to change uid string to object
+  if (uid == req.user._id || uid === req.user.email) {
+    return true;
+  }
+  return false;
+};
+
 module.exports.requireAuth = (req, resp, next) => (
   (!module.exports.isAuthenticated(req))
     ? next(401)
@@ -61,6 +69,15 @@ module.exports.requireAdmin = (req, resp, next) => (
   (!module.exports.isAuthenticated(req))
     ? next(401)
     : (!module.exports.isAdmin(req))
+      ? next(403)
+      : next()
+);
+
+module.exports.requireSameUserOrAdmin = (req, resp, next) => (
+  // eslint-disable-next-line no-nested-ternary
+  (!module.exports.isAuthenticated(req))
+    ? next(401)
+    : (!(module.exports.isAdmin(req) || module.exports.isSameUser(req)))
       ? next(403)
       : next()
 );
