@@ -9,6 +9,7 @@ const {
   getOneUser,
   createUser,
   updateUser,
+  deleteUser,
 } = require('../controller/users');
 const { response } = require('express');
 
@@ -159,6 +160,33 @@ module.exports = (app, nextMain) => {
         console.error(err.message);
         next(500);
       });
+  });
+
+  /**
+   * @name DELETE /users
+   * @description Elimina una usuaria
+   * @params {String} :uid `id` o `email` de la usuaria a modificar
+   * @path {DELETE} /users
+   * @auth Requiere `token` de autenticación y que la usuaria sea **admin** o la usuaria a eliminar
+   * @response {Object} user
+   * @response {String} user._id
+   * @response {Object} user.email
+   * @response {Object} user.roles
+   * @response {Boolean} user.roles.admin
+   * @code {200} si la autenticación es correcta
+   * @code {401} si no hay cabecera de autenticación
+   * @code {403} si no es ni admin o la misma usuaria
+   * @code {404} si la usuaria solicitada no existe
+   */
+  app.delete('/users/:uid', requireSameUserOrAdmin, (req, res, next) => {
+    const uid = req.params.uid;
+    deleteUser(uid)
+      .then((result) => {
+        if (!result.value)
+          return res.status(200).send('Not user found');
+        res.status(200).json(result.value);
+      })
+      .catch(console.error);
   });
 
   nextMain();

@@ -16,3 +16,4 @@ curl -X GET "http://localhost:3000/users/" -H "Authorization: Bearer ${TOKEN}"
 curl -X GET "http://localhost:3000/users/${id}" -H "Authorization: Bearer ${TOKEN}"
 curl -X POST http://localhost:3000/users/ -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" -d '{"email": "chairo", "password": "2050"}'
 curl -X PUT http://localhost:3000/users/ID -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" -d '{"password": 18500}'
+curl -X DELETE http://localhost:3000/users/ID/ -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json"
