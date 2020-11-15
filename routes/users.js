@@ -98,10 +98,13 @@ module.exports = (app, nextMain) => {
     if (!email || !password)
       return res.status(400).send('Please send email and password');
 
+    if (!emailIsValid(email))
+      return res.status(500).send('Please use a valid email');
+
     const user = { email, password };
     // TODO: check if the email is valid with a regex?
     // TODO: Validate roles object - JSON schema?
-    if (roles){
+    if (roles) {
       user.roles = roles;
     }
 
@@ -110,7 +113,6 @@ module.exports = (app, nextMain) => {
         // result.ops has the array of documents inserted, see the docs below:
         // http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#~insertOneWriteOpResult
         const userInserted = result.ops[0];
-        console.log(userInserted);
         delete userInserted.password;
         res.status(200).json(userInserted);
       })
@@ -122,3 +124,7 @@ module.exports = (app, nextMain) => {
 
   nextMain();
 };
+
+const emailIsValid = (email) => {
+  return /\S+@\S+\.\S+/.test(email)
+}
