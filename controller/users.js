@@ -3,7 +3,11 @@ const { ObjectID } = require('../db');
 
 const getUsers = () => {
   const users = client.db('ajidefideo').collection('users');
-  return users.find().toArray();
+  const query = {};
+  const options = {
+    projection: { password: 0 },
+  }
+  return users.find(query, options).toArray();
 }
 
 const getOneUser = (uid) => {
