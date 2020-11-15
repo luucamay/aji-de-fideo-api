@@ -6,8 +6,10 @@ const {
 
 const {
   getUsers,
-  getOneUser
+  getOneUser,
+  createUser
 } = require('../controller/users');
+const { response } = require('express');
 
 /** @module users */
 module.exports = (app, nextMain) => {
@@ -69,6 +71,52 @@ module.exports = (app, nextMain) => {
         res.status(200).json(user);
       })
       .catch(err => res.status(400).send({ message: err.message }));
+  });
+
+  /**
+   * @name POST /users
+   * @description Crea una usuaria
+   * @path {POST} /users
+   * @body {String} email Correo
+   * @body {String} password Contraseña
+   * @body {Object} [roles]
+   * @body {Boolean} [roles.admin]
+   * @auth Requiere `token` de autenticación y que la usuaria sea **admin**
+   * @response {Object} user
+   * @response {String} user._id
+   * @response {Object} user.email
+   * @response {Object} user.roles
+   * @response {Boolean} user.roles.admin
+   * @code {200} si la autenticación es correcta
+   * @code {400} si no se proveen `email` o `password` o ninguno de los dos
+   * @code {401} si no hay cabecera de autenticación
+   * @code {403} si ya existe usuaria con ese `email`
+   */
+  app.post('/users', requireAdmin, (req, res, next) => {
+    const { email, password, roles } = req.body;
+
+    if (!email || !password)
+      return res.status(400).send('Please send email and password');
+
+    const user = { email, password };
+    // TODO: check if the email is valid with a regex?
+
+    if (roles && roles.admin && typeof roles.admin === "boolean"){
+      user.roles = roles;
+    }
+
+    createUser(user)
+      .then((result) => {
+        // result.ops has the array of documents inserted, see the docs below:
+        // http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#~insertOneWriteOpResult
+        const userInserted = result.ops[0];
+        delete userInserted.password;
+        res.status(200).json(userInserted);
+      })
+      .catch(err => {
+        // res.send('User already exists)
+        next(403);
+      })
   });
 
   nextMain();

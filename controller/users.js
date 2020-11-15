@@ -19,7 +19,14 @@ const getOneUser = (uid) => {
     return users.findOne({ "email": uid });
   }
 }
+
+const createUser = (newUser) => {
+  const users = client.db('ajidefideo').collection('users');
+  return users.insertOne(newUser);
+}
+
 module.exports = {
   getOneUser,
-  getUsers
+  getUsers,
+  createUser
 };
