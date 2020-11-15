@@ -25,8 +25,25 @@ const createUser = (newUser) => {
   return users.insertOne(newUser);
 }
 
+const updateUser = (uid, updateFields) => {
+  const users = client.db('ajidefideo').collection('users');
+  const updateDocumentUser = { $set: updateFields };
+  const options = {
+    projection: { password: 0 },
+    returnOriginal: false
+  }
+  try {
+    const filter = { _id: ObjectID(uid) };
+    return users.findOneAndUpdate(filter, updateDocumentUser, options);
+  } catch {
+    const filter = { email: uid };
+    return users.findOneAndUpdate(filter, updateDocumentUser, options);
+  }
+}
+
 module.exports = {
   getOneUser,
   getUsers,
-  createUser
+  createUser,
+  updateUser,
 };
