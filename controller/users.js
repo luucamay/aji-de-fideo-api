@@ -41,9 +41,23 @@ const updateUser = (uid, updateFields) => {
   }
 }
 
+const deleteUser = (uid) => {
+  let filter = {};
+  try {
+    filter = { _id: ObjectID(uid) };
+  }
+  catch {
+    filter = { email: uid };
+  }
+  const users = client.db('ajidefideo').collection('users');
+  const options = { projection: { password: 0 } }
+  return users.findOneAndDelete(filter, options);
+}
+
 module.exports = {
   getOneUser,
   getUsers,
   createUser,
   updateUser,
+  deleteUser,
 };
