@@ -6,12 +6,12 @@ const {
 
 const {
   getUsers,
+  getUsersCount,
   getOneUser,
   createUser,
   updateUser,
   deleteUser,
 } = require('../controller/users');
-const { response } = require('express');
 
 /** @module users */
 module.exports = (app, nextMain) => {
@@ -37,9 +37,23 @@ module.exports = (app, nextMain) => {
    * @code {403} si no es ni admin
    */
   app.get('/users', requireAdmin, (req, res, next) => {
-    getUsers()
+    const { page = 1, limit = 10 } = req.query;
+    getUsersCount()
+      .then((userCount) => {
+        // Validation of page and limit
+        // Calibrate safety values for page, limit and skip
+        const paginationValues = calibratePaginationValues(page, limit, userCount);
+        const newPage = paginationValues.page;
+        const newLimit = paginationValues.limit;
+        const skip = paginationValues.skip;
+        // Add link to header
+        const url = `${req.protocol}://${req.get('host')}${req.path}`;
+        const links = linksPagination(url, newPage, newLimit, userCount);
+        res.header.link = links;
+
+        return getUsers(skip, newLimit);
+      })
       .then((users) => {
-        // TODO: Do not return user passwords!!!
         if (!users)
           return res.status(200).json({ "users": [] });
         return res.status(200).json({ users });
@@ -194,4 +208,42 @@ module.exports = (app, nextMain) => {
 
 const emailIsValid = (email) => {
   return /\S+@\S+\.\S+/.test(email)
+}
+
+const linksPagination = (url, page, limit, total) => {
+  const prevPage = page > 1 ? (parseInt(page, 0) - 1) : 1;
+  const lastPage = Math.ceil(total / limit);
+  const nextPage = limit * page < total ? parseInt(page, 0) + 1 : lastPage;
+
+  const links = {
+    first: `<${url}?limit=${limit}&page=1>; rel="first"`,
+    prev: `<${url}?limit=${limit}&page=${prevPage}>; rel="prev"`,
+    next: `<${url}?limit=${limit}&page=${nextPage}>; rel="next"`,
+    last: `<${url}?limit=${limit}&page=${lastPage}>; rel="last"`,
+  };
+
+  return links;
+};
+
+const calibratePaginationValues = (page, limit, totalDocs) => {
+  page = isNaN(page * 1) ? 1 : page * 1;
+  limit = isNaN(limit * 1) ? 10 : limit * 1;
+  const lastPage = Math.ceil(totalDocs / limit);
+  // TODO: Change to numbers page and limit
+  if (page < 1)
+    page = 1;
+  if (page > lastPage)
+    page = lastPage;
+
+  if (limit > totalDocs)
+    limit = totalDocs;
+  if (limit < 0)
+    limit = 0;
+
+  const skip = (page * limit) - limit;
+
+  if (page == lastPage) {
+    limit = totalDocs - skip;
+  }
+  return { page, limit, skip };
 }

@@ -1,12 +1,19 @@
 const client = require('../db');
 const { ObjectID } = require('../db');
 
-const getUsers = () => {
+const getUsersCount = () => {
   const users = client.db('ajidefideo').collection('users');
-  const query = {};
+  return users.estimatedDocumentCount();
+}
+
+const getUsers = (skip, limit) => {
+  const users = client.db('ajidefideo').collection('users');
   const options = {
     projection: { password: 0 },
+    skip,
+    limit,
   }
+  const query = {};
   return users.find(query, options).toArray();
 }
 
@@ -57,6 +64,7 @@ const deleteUser = (uid) => {
 module.exports = {
   getOneUser,
   getUsers,
+  getUsersCount,
   createUser,
   updateUser,
   deleteUser,
