@@ -13,6 +13,12 @@ curl -H "Authorization: Bearer ${TOKEN}" http://localhost:3000
 
 ## Users CRUD petitions
 curl -X GET "http://localhost:3000/users/" -H "Authorization: Bearer ${TOKEN}"
+### Page and limit cases:
+limit = 23
+limit = -14
+page = -50
+page = 100
+curl -X GET "http://localhost:3000/users?limit=5&page=3" -H "Authorization: Bearer ${TOKEN}"
 curl -X GET "http://localhost:3000/users/${id}" -H "Authorization: Bearer ${TOKEN}"
 curl -X POST http://localhost:3000/users/ -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" -d '{"email": "chairo", "password": "2050"}'
 curl -X PUT http://localhost:3000/users/ID -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/json" -d '{"password": 18500}'

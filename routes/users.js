@@ -37,9 +37,9 @@ module.exports = (app, nextMain) => {
    * @code {403} si no es ni admin
    */
   app.get('/users', requireAdmin, (req, res, next) => {
-    getUsers()
+    const { page = 1, limit = 10 } = req.query;
+    getUsers(page, limit)
       .then((users) => {
-        // TODO: Do not return user passwords!!!
         if (!users)
           return res.status(200).json({ "users": [] });
         return res.status(200).json({ users });

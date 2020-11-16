@@ -58,6 +58,7 @@ An API for restaurants made with NodeJS, Express and MongoDB.
 * [About tag parameters or ```@``` inside a JS file](https://jsdoc.app/tags-param.html)
 * [You will find in the middleware a 'curried function'](https://stackoverflow.com/questions/32782922/what-do-multiple-arrow-functions-mean-in-javascript)
 * [Create a unique index in MongoDB](https://docs.mongodb.com/manual/core/index-unique/)
+* [Simple pagination (limit and skip)](https://medium.com/javascript-in-plain-english/simple-pagination-with-node-js-mongoose-and-express-4942af479ab2)
 
 ## Questions
 * What should return by default he GET endpoint? (Maybe just the name of the API and the version?)
