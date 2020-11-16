@@ -1,38 +1,20 @@
 const client = require('../db');
 const { ObjectID } = require('../db');
 
-const getUsers = (page, limit) => {
+const getUsersCount = () => {
   const users = client.db('ajidefideo').collection('users');
+  return users.estimatedDocumentCount();
+}
 
-  return users.estimatedDocumentCount()
-    .then(userCount => {
-      const lastPage = Math.ceil(userCount / limit);
-      // TODO: Check for number parameters
-
-      if (page < 1)
-        page = 1;
-      if (page > lastPage)
-        page = lastPage;
-      if (limit > userCount)
-        limit = userCount;
-      if (limit < 0)
-        limit = 0;
-      const skip = (page * limit) - limit;
-      if (page == lastPage) { // TODO: Change to numbers page and limit
-        limit = userCount - skip;
-      }
-
-      const options = {
-        projection: { password: 0 },
-        skip,
-        limit,
-      }
-
-      const query = {};
-      return users.find(query, options).toArray();
-
-    })
-    .catch(err => next(503))
+const getUsers = (skip, limit) => {
+  const users = client.db('ajidefideo').collection('users');
+  const options = {
+    projection: { password: 0 },
+    skip,
+    limit,
+  }
+  const query = {};
+  return users.find(query, options).toArray();
 }
 
 const getOneUser = (uid) => {
@@ -82,6 +64,7 @@ const deleteUser = (uid) => {
 module.exports = {
   getOneUser,
   getUsers,
+  getUsersCount,
   createUser,
   updateUser,
   deleteUser,
